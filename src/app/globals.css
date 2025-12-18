@@ -1,116 +1,104 @@
 @import "tailwindcss";
 
 :root {
-  /* Notion-like Palette */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f7f6f3; /* Warm light gray/beige */
-  --bg-hover: #efefed;
+  /* --- 이미지 추출 & 추천 컬러 시스템 (HEX) --- */
+  --color-brand-50: #F9F8F6;  /* 배경 (Ivory) */
+  --color-brand-100: #EFE9E3; /* 보조 배경 (Soft Sand) */
+  --color-brand-200: #D9CFC7; /* 경계선/비활성 (Warm Grey) */
+  --color-brand-300: #C9B59C; /* 포인트/중간톤 (Tan Beige) */
+  
+  /* 추천받은 진한 컬러 (Text & Logo) */
+  --color-brand-800: #4A493D; /* 뮤트 다크 올리브 (Subtle Accent) */
+  --color-brand-900: #3E362E; /* 딥 차콜 브라운 (Main Text) */
+  --color-brand-950: #2C2621; /* 웜 블랙 (Bold Logo) */
 
-  --fg-primary: #37352f;
-  --fg-secondary: #787774;
-  --fg-tertiary: #9b9a97;
-
-  --border-default: #e9e9e7;
-
-  /* Accents (Muted/Natural) */
-  --accent-brown: #442a1e;
-  --accent-brown-bg: #f4eeee;
+  /* Notion-like Accent Base */
   --accent-orange: #d9730d;
-  --accent-orange-bg: #fbf3db;
-  --accent-yellow: #dfab01;
-  --accent-yellow-bg: #fbf3db;
   --accent-green: #0f7b6c;
-  --accent-green-bg: #edf6f5;
   --accent-blue: #0b6e99;
-  --accent-blue-bg: #e6f3f7;
-  --accent-purple: #6940a5;
-  --accent-purple-bg: #f6f3f9;
-  --accent-pink: #ad1a72;
-  --accent-pink-bg: #f9f2f5;
   --accent-red: #e03e3e;
-  --accent-red-bg: #fbe4e4;
 }
 
 @theme inline {
-  --color-background: var(--bg-primary);
-  --color-foreground: var(--fg-primary);
-  /* Chocolate Latte Theme */
-  --background: #FDFBF7; /* Warm steamed milk/beige */
-  --foreground: #4A3728; /* Coffee bean brown */
-  
-  --primary: #6D4C41; /* Cocoa */
-  --primary-foreground: #FFFFFF;
-  
-  --secondary: #D7CCC8; /* Latte foam */
-  --secondary-foreground: #3E2723;
-  
-  --accent: #8D6E63; /* Cinnamon */
-  --accent-foreground: #FFFFFF;
-  
-  --muted: #EFEBE9;
-  --muted-foreground: #8D6E63;
+  /* Tailwind v4 핵심 테마 변수 매핑 */
+  --color-background: var(--color-brand-50);
+  --color-foreground: var(--color-brand-900);
 
-  --card: #FFFFFF;
-  --card-foreground: #4A3728;
+  --color-primary: var(--color-brand-900);
+  --color-primary-foreground: var(--color-brand-50);
 
-  --border: #EFEBE9;
-  --input: #EFEBE9;
-  --ring: #8D6E63;
+  --color-secondary: var(--color-brand-300);
+  --color-secondary-foreground: var(--color-brand-950);
+
+  --color-muted: var(--color-brand-100);
+  --color-muted-foreground: var(--color-brand-800);
+
+  --color-accent: var(--color-brand-800);
+  --color-accent-foreground: var(--color-brand-50);
+
+  --color-border: var(--color-brand-200);
+  --color-input: var(--color-brand-100);
+  --color-ring: var(--color-brand-300);
+
+  /* 기존 Latte 네이밍 유지용 변수 */
+  --color-latte-brown: var(--color-brand-900);
+  --color-latte-beige: var(--color-brand-300);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #3E2723; /* Dark roast */
-    --foreground: #FDFBF7; /* Foam */
-    
-    --primary: #8D6E63;
-    --primary-foreground: #FFFFFF;
-    
-    --secondary: #4E342E;
-    --secondary-foreground: #D7CCC8;
-    
-    --accent: #6D4C41;
-    --accent-foreground: #D7CCC8;
-    
-    --muted: #4E342E;
-    --muted-foreground: #A1887F;
+  @theme inline {
+    --color-background: var(--color-brand-950);
+    --color-foreground: var(--color-brand-50);
 
-    --card: #4E342E;
-    --card-foreground: #FDFBF7;
+    --color-primary: var(--color-brand-300);
+    --color-primary-foreground: var(--color-brand-950);
 
-    --border: #5D4037;
-    --input: #5D4037;
-    --ring: #A1887F;
+    --color-secondary: #3E362E;
+    --color-secondary-foreground: var(--color-brand-100);
+
+    --color-muted: #3E362E;
+    --color-muted-foreground: var(--color-brand-200);
+
+    --color-border: #4A3728;
+    --color-input: #4A3728;
   }
 }
 
+/* --- 전역 스타일 --- */
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* Custom Utility Classes for Latte Theme */
-.latte-card {
-  @apply bg-white dark:bg-[#4E342E] border border-[#EFEBE9] dark:border-[#5D4037] rounded-xl shadow-sm p-6;
-}
+/* --- 커스텀 유틸리티 클래스 (v4 @layer 방식) --- */
+@layer components {
+  /* 메인 카드 스타일 */
+  .latte-card {
+    @apply bg-white dark:bg-brand-900 border border-brand-200 dark:border-brand-800 rounded-2xl shadow-sm p-6;
+  }
 
-.latte-h1 {
-  @apply text-3xl font-bold text-[#3E2723] dark:text-[#EFEBE9] mb-4;
-}
+  /* 헤딩 스타일 - 추천받은 딥 컬러 적용 */
+  .latte-h1 {
+    @apply text-3xl font-bold text-brand-950 dark:text-brand-50 mb-4 tracking-tight;
+  }
 
-.latte-h2 {
-  @apply text-xl font-semibold text-[#5D4037] dark:text-[#D7CCC8] mb-3;
-}
+  .latte-h2 {
+    @apply text-xl font-semibold text-brand-900 dark:text-brand-200 mb-3;
+  }
 
-.latte-button {
-  @apply px-4 py-2 bg-[#6D4C41] text-white rounded-lg hover:bg-[#5D4037] transition-colors font-medium shadow-sm;
-}
+  /* 버튼 스타일 */
+  .latte-button {
+    @apply px-5 py-2.5 bg-brand-900 text-brand-50 dark:bg-brand-300 dark:text-brand-950 rounded-lg hover:opacity-90 transition-all font-medium shadow-sm active:scale-95;
+  }
 
-.latte-button-outline {
-  @apply px-4 py-2 border border-[#8D6E63] text-[#6D4C41] dark:text-[#D7CCC8] rounded-lg hover:bg-[#EFEBE9] dark:hover:bg-[#5D4037] transition-colors font-medium;
-}
+  .latte-button-outline {
+    @apply px-5 py-2.5 border border-brand-900 text-brand-900 dark:border-brand-300 dark:text-brand-300 rounded-lg hover:bg-brand-100 dark:hover:bg-brand-900 transition-colors font-medium;
+  }
 
-.latte-input {
-  @apply px-4 py-2 rounded-lg border border-[#EFEBE9] dark:border-[#5D4037] bg-transparent focus:ring-2 focus:ring-[#8D6E63] focus:outline-none w-full;
+  /* 입력창 스타일 */
+  .latte-input {
+    @apply px-4 py-2 rounded-lg border border-brand-200 dark:border-brand-800 bg-white dark:bg-brand-950 focus:ring-2 focus:ring-brand-300 focus:outline-none w-full transition-all;
+  }
 }
