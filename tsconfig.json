@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,16 +23,69 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@image/*": [
+        "./public/image/*"
+      ],
+      "@icons/*": [
+        "./public/image/icons/*"
+      ],
+      "@assets/*": [
+        "./public/assets/*"
+      ],
+      "@styles/*": [
+        "./src/app/styles/*"
+      ],
+      "@components/*": [
+        "./src/app/components/*"
+      ],
+      "@enumerate/*": [
+        "./src/enumerate/*"
+      ],
+      "@hooks/*": [
+        "./src/app/hooks/*"
+      ],
+      "@context/*": [
+        "./src/context/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@api/*": [
+        "./src/api/*"
+      ],
+      "@lib/*": [
+        "./src/app/lib/*"
+      ],
+      "@type/*": [
+        "./src/app/types/*"
+      ],
+      "@analytics/*": [
+        "./src/analytics/*"
+      ],
+      "@fonts/*": [
+        "./src/app/fonts/*"
+      ],
+      "@contents/*": [
+        "./src/contents/*"
+      ],
+      "@constants/*": [
+        "./src/constants/*"
+      ],
+      "@stores/*": [
+        "./src/app/stores/*"
+      ]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.d.ts",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

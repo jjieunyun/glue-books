@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Navbar from "@/components/Navbar";
+import { Nanum_Gothic } from "next/font/google";
+
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const nanumGothic = Nanum_Gothic({
+  weight: ["400", "800", "700"],
+  subsets: ["latin"], // 한글 폰트지만 next/font 옵션상 보통 latin 지정 + display swap로 사용
+  display: "swap",
+  variable: "--font-nanum-gothic", // Tailwind에서 쓰기 좋게
 });
 
 export const metadata: Metadata = {
-  title: "GlueBooks - Share Your Reading Journey",
-  description: "A community for book lovers to track and share their reading progress.",
+  title: "Glue - Share Your Reading Journey",
 };
 
 export default function RootLayout({
@@ -25,11 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100`}
-      >
-        <Navbar />
-        <main className="pt-20 min-h-screen">
+      <body className={`${nanumGothic.variable} font-sans`}>
+        <main className="min-h-screen">
           {children}
         </main>
       </body>
