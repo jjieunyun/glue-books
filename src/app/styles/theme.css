@@ -1,0 +1,69 @@
+@theme inline {
+  /* --- 이미지 추출 & 추천 컬러 시스템 (HEX) --- */
+  --color-brand-50: #F9F8F6;
+  /* 배경 (Ivory) */
+  --color-brand-100: #EFE9E3;
+  /* 보조 배경 (Soft Sand) */
+  --color-brand-200: #D9CFC7;
+  /* 경계선/비활성 (Warm Grey) */
+  --color-brand-300: #C9B59C;
+  /* 포인트/중간톤 (Tan Beige) */
+  --color-brand-800: #52504C;
+  /* 뮤트 다크 올리브 (Subtle Accent) */
+  --color-brand-900: #3E362E;
+  /* 딥 차콜 브라운 (Main Text) */
+  --color-brand-950: #2C2621;
+  /* 웜 블랙 (Bold Logo) */
+
+  /* Notion-like Accent Base */
+  --accent-orange: #d9730d;
+  --accent-green: #0f7b6c;
+  --accent-blue: #0b6e99;
+  --accent-red: #e03e3e;
+  
+  /* Tailwind v4 핵심 테마 변수 매핑 */
+  --color-background: var(--color-brand-50);
+  --color-foreground: var(--color-brand-900);
+
+  --color-primary: var(--color-brand-900);
+  --color-primary-foreground: var(--color-brand-50);
+
+  --color-secondary: var(--color-brand-300);
+  --color-secondary-foreground: var(--color-brand-950);
+
+  --color-muted: var(--color-brand-100);
+  --color-muted-foreground: var(--color-brand-800);
+
+  --color-accent: var(--color-brand-800);
+  --color-accent-foreground: var(--color-brand-50);
+
+  --color-border: var(--color-brand-200);
+  --color-input: var(--color-brand-100);
+  --color-ring: var(--color-brand-300);
+
+  /* 기존 Latte 네이밍 유지용 변수 */
+  --color-latte-brown: var(--color-brand-900);
+  --color-latte-beige: var(--color-brand-300);
+
+  /* 폰트 설정 */
+  --font-sans: var(--font-nanum-gothic), sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  @theme inline {
+    --color-background: var(--color-brand-950);
+    --color-foreground: var(--color-brand-50);
+
+    --color-primary: var(--color-brand-300);
+    --color-primary-foreground: var(--color-brand-950);
+
+    --color-secondary: #3E362E;
+    --color-secondary-foreground: var(--color-brand-100);
+
+    --color-muted: #3E362E;
+    --color-muted-foreground: var(--color-brand-200);
+
+    --color-border: #4A3728;
+    --color-input: #4A3728;
+  }
+}

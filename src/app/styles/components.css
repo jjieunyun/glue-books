@@ -1,0 +1,30 @@
+@layer components {
+
+  /* 메인 카드 스타일 */
+  .latte-card {
+    @apply bg-white dark:bg-brand-900 border border-brand-200 dark:border-brand-800 rounded-2xl shadow-sm p-6;
+  }
+
+  /* 헤딩 스타일 - 추천받은 딥 컬러 적용 */
+  .latte-h1 {
+    @apply text-3xl font-bold text-brand-950 dark:text-brand-50 mb-4 tracking-tight;
+  }
+
+  .latte-h2 {
+    @apply text-xl font-semibold text-brand-900 dark:text-brand-200 mb-3;
+  }
+
+  /* 버튼 스타일 */
+  .latte-button {
+    @apply px-5 py-2.5 bg-brand-900 text-brand-50 dark:bg-brand-300 dark:text-brand-950 rounded-lg hover:opacity-90 transition-all font-medium shadow-sm active:scale-95;
+  }
+
+  .latte-button-outline {
+    @apply px-5 py-2.5 border border-brand-900 text-brand-900 dark:border-brand-300 dark:text-brand-300 rounded-lg hover:bg-brand-100 dark:hover:bg-brand-900 transition-colors font-medium;
+  }
+
+  /* 입력창 스타일 */
+  .latte-input {
+    @apply px-4 py-2 rounded-lg border border-brand-200 dark:border-brand-800 bg-white dark:bg-brand-950 focus:ring-2 focus:ring-brand-300 focus:outline-none w-full transition-all;
+  }
+}

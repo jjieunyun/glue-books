@@ -3,12 +3,14 @@
 import { useState } from 'react';
 
 import { signInWithPopup } from 'firebase/auth';
-import { auth, googleProvider } from '../../lib/firebase';
+import { auth, googleProvider } from '../../../lib/firebase';
 import { useRouter } from 'next/navigation';
 import { login } from '@api/auth';
+import { useUserInfoStore } from '../../../stores/useUserInfoStore';
 
 export default function useLogin() {
     const router = useRouter();
+    const { setUserInfo } = useUserInfoStore({ keys: ['setUserInfo'] });
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -24,6 +26,12 @@ export default function useLogin() {
             const res = await login({ payload: { token, email: user.email || '' } });
 
             if (res?.ok) {
+                setUserInfo({
+                    id: user.uid,
+                    email: user.email,
+                    name: user.displayName,
+                    picture: user.photoURL,
+                });
                 router.push('/dashboard');
             } else {
                 alert('로그인에 실패했습니다.');

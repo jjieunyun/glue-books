@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Nanum_Gothic } from "next/font/google";
-
 import "./globals.css";
+import UserInitializer from "./components/UserInitializer";
 
 const nanumGothic = Nanum_Gothic({
   weight: ["400", "800", "700"],
@@ -21,7 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nanumGothic.variable} font-sans`}>
+      <body className={`${nanumGothic.variable} font-sans`} suppressHydrationWarning={true}>
+        <UserInitializer />
         <main className="min-h-screen">
           {children}
         </main>

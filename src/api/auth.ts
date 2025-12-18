@@ -6,3 +6,15 @@ export function login({ payload }: { payload: { token: string, email: string } }
         body: JSON.stringify(payload),
     });
 }
+
+export function logout() {
+    return fetch('/api/auth/signout', {
+        method: 'POST',
+    });
+}
+
+export function getUserInfo() {
+    return fetch('/api/auth/userInfo', {
+        method: 'GET',
+    });
+}

@@ -4,10 +4,25 @@ interface ApiResponse {
 }
 
 export default async function apiClientHandler(
-    fn: Promise<ApiResponse>,
+    fn: Promise<ApiResponse> | Promise<Response>,
 ): Promise<any> {
     try {
         const res = await fn;
+
+        if (res instanceof Response) {
+            if (!res.ok) {
+                const errorBody = await res.json().catch(() => ({}));
+                const error: any = new Error('HTTP Error');
+                error.response = {
+                    status: res.status,
+                    data: errorBody,
+                    message: errorBody.message,
+                };
+                throw error;
+            }
+            return await res.json();
+        }
+
         return res.data;
     } catch (error: any) {
         // Sentry.captureException(error);

@@ -1,75 +1,6 @@
 @import "tailwindcss";
-
-@theme inline {
-  /* --- 이미지 추출 & 추천 컬러 시스템 (HEX) --- */
-  --color-brand-50: #F9F8F6;
-  /* 배경 (Ivory) */
-  --color-brand-100: #EFE9E3;
-  /* 보조 배경 (Soft Sand) */
-  --color-brand-200: #D9CFC7;
-  /* 경계선/비활성 (Warm Grey) */
-  --color-brand-300: #C9B59C;
-  /* 포인트/중간톤 (Tan Beige) */
-
-  /* 추천받은 진한 컬러 (Text & Logo) */
-  --color-brand-800: #4A493D;
-  /* 뮤트 다크 올리브 (Subtle Accent) */
-  --color-brand-900: #3E362E;
-  /* 딥 차콜 브라운 (Main Text) */
-  --color-brand-950: #2C2621;
-  /* 웜 블랙 (Bold Logo) */
-
-  /* Notion-like Accent Base */
-  --accent-orange: #d9730d;
-  --accent-green: #0f7b6c;
-  --accent-blue: #0b6e99;
-  --accent-red: #e03e3e;
-  /* Tailwind v4 핵심 테마 변수 매핑 */
-  --color-background: var(--color-brand-50);
-  --color-foreground: var(--color-brand-900);
-
-  --color-primary: var(--color-brand-900);
-  --color-primary-foreground: var(--color-brand-50);
-
-  --color-secondary: var(--color-brand-300);
-  --color-secondary-foreground: var(--color-brand-950);
-
-  --color-muted: var(--color-brand-100);
-  --color-muted-foreground: var(--color-brand-800);
-
-  --color-accent: var(--color-brand-800);
-  --color-accent-foreground: var(--color-brand-50);
-
-  --color-border: var(--color-brand-200);
-  --color-input: var(--color-brand-100);
-  --color-ring: var(--color-brand-300);
-
-  /* 기존 Latte 네이밍 유지용 변수 */
-  --color-latte-brown: var(--color-brand-900);
-  --color-latte-beige: var(--color-brand-300);
-
-  /* 폰트 설정 */
-  --font-sans: var(--font-nanum-gothic), sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  @theme inline {
-    --color-background: var(--color-brand-950);
-    --color-foreground: var(--color-brand-50);
-
-    --color-primary: var(--color-brand-300);
-    --color-primary-foreground: var(--color-brand-950);
-
-    --color-secondary: #3E362E;
-    --color-secondary-foreground: var(--color-brand-100);
-
-    --color-muted: #3E362E;
-    --color-muted-foreground: var(--color-brand-200);
-
-    --color-border: #4A3728;
-    --color-input: #4A3728;
-  }
-}
+@import "./styles/theme.css";
+@import "./styles/components.css";
 
 /* --- 전역 스타일 --- */
 body {
@@ -78,34 +9,11 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* --- 커스텀 유틸리티 클래스 (v4 @layer 방식) --- */
-@layer components {
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
-  /* 메인 카드 스타일 */
-  .latte-card {
-    @apply bg-white dark:bg-brand-900 border border-brand-200 dark:border-brand-800 rounded-2xl shadow-sm p-6;
-  }
-
-  /* 헤딩 스타일 - 추천받은 딥 컬러 적용 */
-  .latte-h1 {
-    @apply text-3xl font-bold text-brand-950 dark:text-brand-50 mb-4 tracking-tight;
-  }
-
-  .latte-h2 {
-    @apply text-xl font-semibold text-brand-900 dark:text-brand-200 mb-3;
-  }
-
-  /* 버튼 스타일 */
-  .latte-button {
-    @apply px-5 py-2.5 bg-brand-900 text-brand-50 dark:bg-brand-300 dark:text-brand-950 rounded-lg hover:opacity-90 transition-all font-medium shadow-sm active:scale-95;
-  }
-
-  .latte-button-outline {
-    @apply px-5 py-2.5 border border-brand-900 text-brand-900 dark:border-brand-300 dark:text-brand-300 rounded-lg hover:bg-brand-100 dark:hover:bg-brand-900 transition-colors font-medium;
-  }
-
-  /* 입력창 스타일 */
-  .latte-input {
-    @apply px-4 py-2 rounded-lg border border-brand-200 dark:border-brand-800 bg-white dark:bg-brand-950 focus:ring-2 focus:ring-brand-300 focus:outline-none w-full transition-all;
-  }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }

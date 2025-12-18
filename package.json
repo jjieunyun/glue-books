@@ -11,10 +11,11 @@
   },
   "dependencies": {
     "firebase": "^12.7.0",
+    "iron-session": "^8.0.4",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1",
-    "iron-session": "^8.0.4"
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
