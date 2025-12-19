@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nanum_Gothic } from "next/font/google";
+import { Nanum_Gothic, Schoolbell } from "next/font/google";
 import "./globals.css";
 import UserInitializer from "./components/UserInitializer";
 
@@ -8,6 +8,13 @@ const nanumGothic = Nanum_Gothic({
   subsets: ["latin"], // 한글 폰트지만 next/font 옵션상 보통 latin 지정 + display swap로 사용
   display: "swap",
   variable: "--font-nanum-gothic", // Tailwind에서 쓰기 좋게
+});
+
+const schoolbell = Schoolbell({
+  weight: ["400"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-schoolbell",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nanumGothic.variable} font-sans`} suppressHydrationWarning={true}>
+      <body className={`${nanumGothic.variable} ${schoolbell.variable} font-sans`} suppressHydrationWarning={true}>
         <UserInitializer />
         <main className="min-h-screen">
           {children}

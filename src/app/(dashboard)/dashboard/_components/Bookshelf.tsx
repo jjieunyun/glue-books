@@ -9,7 +9,7 @@ interface BookshelfProps {
 
 export default function Bookshelf() {
     return (
-        <div className="w-full max-w-5xl mx-auto p-8">
+        <div className="w-full max-w-[1280px] mx-auto">
             {/* 책장 전체 틀 */}
             <div className="relative bg-[#3d2b1f] border-t-8 border-x-8 border-[#2c1e16] shadow-2xl rounded-sm">
 

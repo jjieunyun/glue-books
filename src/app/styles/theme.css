@@ -1,19 +1,16 @@
 @theme inline {
-  /* --- 이미지 추출 & 추천 컬러 시스템 (HEX) --- */
-  --color-brand-50: #F9F8F6;
-  /* 배경 (Ivory) */
-  --color-brand-100: #EFE9E3;
-  /* 보조 배경 (Soft Sand) */
-  --color-brand-200: #D9CFC7;
-  /* 경계선/비활성 (Warm Grey) */
-  --color-brand-300: #C9B59C;
-  /* 포인트/중간톤 (Tan Beige) */
-  --color-brand-800: #52504C;
-  /* 뮤트 다크 올리브 (Subtle Accent) */
-  --color-brand-900: #3E362E;
-  /* 딥 차콜 브라운 (Main Text) */
-  --color-brand-950: #2C2621;
-  /* 웜 블랙 (Bold Logo) */
+  /* --- Glue Palette (Rodeo Dust based) --- */
+  --color-glue-50: #f9f6f3;
+  --color-glue-100: #f0ece4;
+  --color-glue-200: #e1d6c7;
+  --color-glue-300: #c9b59c;
+  --color-glue-400: #b89c7f;
+  --color-glue-500: #aa8465;
+  --color-glue-600: #9d7359;
+  --color-glue-700: #835d4b;
+  --color-glue-800: #6b4e41;
+  --color-glue-900: #574037;
+  --color-glue-950: #52514B;
 
   /* Notion-like Accent Base */
   --accent-orange: #d9730d;
@@ -21,49 +18,50 @@
   --accent-blue: #0b6e99;
   --accent-red: #e03e3e;
   
-  /* Tailwind v4 핵심 테마 변수 매핑 */
-  --color-background: var(--color-brand-50);
-  --color-foreground: var(--color-brand-900);
+  /* Tailwind v4 vars mapping */
+  --color-background: var(--color-glue-50);
+  --color-foreground: var(--color-glue-900);
 
-  --color-primary: var(--color-brand-900);
-  --color-primary-foreground: var(--color-brand-50);
+  --color-primary: var(--color-glue-900);
+  --color-primary-foreground: var(--color-glue-50);
 
-  --color-secondary: var(--color-brand-300);
-  --color-secondary-foreground: var(--color-brand-950);
+  --color-secondary: var(--color-glue-300);
+  --color-secondary-foreground: var(--color-glue-950);
 
-  --color-muted: var(--color-brand-100);
-  --color-muted-foreground: var(--color-brand-800);
+  --color-muted: var(--color-glue-100);
+  --color-muted-foreground: var(--color-glue-800);
 
-  --color-accent: var(--color-brand-800);
-  --color-accent-foreground: var(--color-brand-50);
+  --color-accent: var(--color-glue-800);
+  --color-accent-foreground: var(--color-glue-50);
 
-  --color-border: var(--color-brand-200);
-  --color-input: var(--color-brand-100);
-  --color-ring: var(--color-brand-300);
+  --color-border: var(--color-glue-200);
+  --color-input: var(--color-glue-100);
+  --color-ring: var(--color-glue-300);
 
-  /* 기존 Latte 네이밍 유지용 변수 */
-  --color-latte-brown: var(--color-brand-900);
-  --color-latte-beige: var(--color-brand-300);
+  /* Legacy */
+  --color-latte-brown: var(--color-glue-900);
+  --color-latte-beige: var(--color-glue-300);
 
-  /* 폰트 설정 */
+  /* Font */
   --font-sans: var(--font-nanum-gothic), sans-serif;
+  --font-schoolbell: var(--font-schoolbell), cursive;
 }
 
 @media (prefers-color-scheme: dark) {
   @theme inline {
-    --color-background: var(--color-brand-950);
-    --color-foreground: var(--color-brand-50);
+    --color-background: var(--color-glue-950);
+    --color-foreground: var(--color-glue-50);
 
-    --color-primary: var(--color-brand-300);
-    --color-primary-foreground: var(--color-brand-950);
+    --color-primary: var(--color-glue-300);
+    --color-primary-foreground: var(--color-glue-950);
 
-    --color-secondary: #3E362E;
-    --color-secondary-foreground: var(--color-brand-100);
+    --color-secondary: #574037;
+    --color-secondary-foreground: var(--color-glue-100);
 
-    --color-muted: #3E362E;
-    --color-muted-foreground: var(--color-brand-200);
+    --color-muted: #574037;
+    --color-muted-foreground: var(--color-glue-200);
 
-    --color-border: #4A3728;
-    --color-input: #4A3728;
+    --color-border: #6b4e41;
+    --color-input: #6b4e41;
   }
 }

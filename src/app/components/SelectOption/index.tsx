@@ -38,33 +38,33 @@ function getContainerClasses(opts: {
     } = opts;
 
     if (disabled) {
-        return 'cursor-not-allowed border border-brand-200 bg-brand-50 text-brand-300 font-medium';
+        return 'cursor-not-allowed border border-glue-200 bg-glue-50 text-glue-300 font-medium';
     }
 
     if (error) {
-        return 'border border-red-500 cursor-pointer text-brand-900 font-medium';
+        return 'border border-red-500 cursor-pointer text-glue-900 font-medium';
     }
 
     if (isDeletable) {
-        return 'cursor-pointer bg-brand-100 border border-brand-300 text-brand-900 font-medium';
+        return 'cursor-pointer bg-glue-100 border border-glue-300 text-glue-900 font-medium';
     }
 
     if (isSelected) {
         if (variant === 'input') {
-            return 'bg-brand-50 cursor-pointer text-brand-900 font-medium';
+            return 'bg-glue-50 cursor-pointer text-glue-900 font-medium';
         }
-        return 'cursor-pointer bg-brand-100 border border-brand-300 text-brand-900 font-medium';
+        return 'cursor-pointer bg-glue-100 border border-glue-300 text-glue-900 font-medium';
     }
 
     if (theme === 'gray') {
-        return 'bg-brand-50 cursor-pointer text-brand-800 font-medium border border-transparent';
+        return 'bg-glue-50 cursor-pointer text-glue-800 font-medium border border-transparent';
     }
 
     if (theme === 'white') {
-        return 'bg-white cursor-pointer text-brand-800 border border-brand-200 font-medium';
+        return 'bg-white cursor-pointer text-glue-800 border border-glue-200 font-medium';
     }
 
-    return 'border border-brand-200 bg-white cursor-pointer text-brand-800 font-medium';
+    return 'border border-glue-200 bg-white cursor-pointer text-glue-800 font-medium';
 }
 
 export interface Option {
@@ -204,11 +204,11 @@ export default function SelectOption({
                 )} ${height}`}
                 onClick={toggleDropdown}>
                 <div className={`flex items-center overflow-hidden text-sm`}>
-                    <span className="text-base font-medium text-brand-800 shrink-0">
+                    <span className="text-base font-medium text-glue-800 shrink-0">
                         {labelPrefix}
                     </span>
                     {label && (
-                        <span className="mr-2 text-sm font-medium text-brand-800 shrink-0">
+                        <span className="mr-2 text-sm font-medium text-glue-800 shrink-0">
                             {label}
                         </span>
                     )}
@@ -220,16 +220,16 @@ export default function SelectOption({
                 {isDeletable ? (
                     <button
                         type="button"
-                        className="rounded-full bg-transparent p-1 transition-all duration-300 hover:bg-brand-200"
+                        className="rounded-full bg-transparent p-1 transition-all duration-300 hover:bg-glue-200"
                         onClick={(e) => {
                             e.stopPropagation();
                             handleOptionClick(resolvedDefaultValue);
                         }}>
-                        <CloseIcon className="text-brand-800 cursor-pointer" />
+                        <CloseIcon className="text-glue-800 cursor-pointer" />
                     </button>
                 ) : (
                     <ChevronIcon
-                        className={`text-brand-800 duration-300 ease-in-out cursor-pointer ${isOpen ? 'rotate-180 transform' : ''} ${disabled ? 'opacity-50' : ''}`}
+                        className={`text-glue-800 duration-300 ease-in-out cursor-pointer ${isOpen ? 'rotate-180 transform' : ''} ${disabled ? 'opacity-50' : ''}`}
                     />
                 )}
             </div>

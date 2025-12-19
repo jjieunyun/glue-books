@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import ImageLogo from '@image/logo.png'
+import ImageLogo from '@image/logo.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
 import { signOut } from 'firebase/auth';
@@ -36,7 +36,7 @@ export default function Navbar() {
             <div className="max-w-[1280px] mx-auto sm:px-6 px-4">
                 <div className="flex justify-between items-center h-16">
                     <div className="flex-shrink-0 flex items-center">
-                        <Image src={ImageLogo} alt="GlueBooks Logo" width={80} height={80} />
+                        <Image src={ImageLogo} alt="GlueBooks Logo" width={110} height={110} />
                     </div>
                     <div className="hidden sm:flex space-x-8">
                         <NavLink href="/dashboard">Dashboard</NavLink>
@@ -88,11 +88,11 @@ const UserButton = ({ userInfo, onLogout }: { userInfo: any, onLogout: () => voi
             onMouseLeave={handleMouseLeave}
         >
             <button
-                className="cursor-pointer flex items-center gap-x-2 rounded-full hover:bg-brand-50 transition-colors"
+                className="cursor-pointer flex items-center gap-x-2 rounded-full hover:bg-glue-50 transition-colors"
                 onClick={handleClick}
             >
-                <span className="text-brand-900 text-md font-bold">{userInfo?.name}</span>
-                <div className="relative w-8 h-8 rounded-full overflow-hidden border border-brand-200">
+                <span className="text-glue-900 text-md font-bold">{userInfo?.name}</span>
+                <div className="relative w-8 h-8 rounded-full overflow-hidden border border-glue-200">
                     <Image
                         src={userInfo?.picture || IcUser}
                         alt="User"
@@ -103,10 +103,10 @@ const UserButton = ({ userInfo, onLogout }: { userInfo: any, onLogout: () => voi
             </button>
 
             {isOpen && (
-                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[240px] rounded-2xl bg-white shadow-lg border border-brand-100 ring-1 ring-black/5 flex flex-col z-50 overflow-hidden">
+                <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-[240px] rounded-2xl bg-white shadow-lg border border-glue-100 ring-1 ring-black/5 flex flex-col z-50 overflow-hidden">
                     {/* Header */}
-                    <div className="px-6 py-5 border-b border-brand-100 flex flex-col items-center gap-3 bg-brand-50/30">
-                        <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-brand-200 shadow-sm">
+                    <div className="px-6 py-5 border-b border-glue-100 flex flex-col items-center gap-3 bg-glue-50/30">
+                        <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-glue-200 shadow-sm">
                             <Image
                                 src={userInfo?.picture || IcUser}
                                 alt="Profile"
@@ -115,8 +115,8 @@ const UserButton = ({ userInfo, onLogout }: { userInfo: any, onLogout: () => voi
                             />
                         </div>
                         <div className="text-center mt-1">
-                            <p className="text-brand-950 font-bold text-lg leading-tight">{userInfo?.name || 'User'}</p>
-                            <p className="text-brand-950 text-sm font-medium mt-1">{userInfo?.email}</p>
+                            <p className="text-glue-950 font-bold text-lg leading-tight">{userInfo?.name || 'User'}</p>
+                            <p className="text-glue-950 text-sm font-medium mt-1">{userInfo?.email}</p>
                         </div>
                     </div>
 
@@ -124,7 +124,7 @@ const UserButton = ({ userInfo, onLogout }: { userInfo: any, onLogout: () => voi
                     <div className="p-2">
                         <button
                             onClick={onLogout}
-                            className="w-full flex items-center justify-center gap-x-2 px-4 py-2.5 text-sm font-medium text-brand-800 hover:bg-brand-50 hover:text-brand-950 rounded-xl transition-all cursor-pointer"
+                            className="w-full flex items-center justify-center gap-x-2 px-4 py-2.5 text-sm font-medium text-glue-800 hover:bg-glue-50 hover:text-glue-950 rounded-xl transition-all cursor-pointer"
                         >
                             <Image src={IconLogout} alt="Logout" width={18} height={18} className="opacity-70" />
                             <span>Logout</span>

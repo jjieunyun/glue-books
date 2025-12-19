@@ -2,9 +2,10 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import logo from '@image/logo.png'
-import arrowDown from '@image/glue_arrow_down.png'
+import logo from '@image/logo.svg'
+import arrowDown from '@image/glue_arrow_down.svg'
 import useLogin from '../_hooks/useLogin';
+import cat from '@image/login-cat.svg'
 
 export default function LoginPage() {
 
@@ -13,19 +14,20 @@ export default function LoginPage() {
 
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-brand-50">
-            <h1 className="text-3xl font-bold text-brand-950 tracking-tight mb-12">오늘도 기록하러 왔어?</h1>
-            <div className="w-full max-w-md bg-white p-10 rounded-2xl shadow-xl border border-brand-200 text-center">
+        <div className="min-h-screen flex flex-col items-center justify-center px-4 bg-glue-50">
+            <Image src={cat} alt="Cat" width={120} height={120} className="mb-6" />
+            <h1 className="text-3xl font-bold text-black tracking-tight mb-12">안녕! 오늘도 기록하러 왔어?</h1>
+            <div className="w-full max-w-md bg-white p-10 rounded-2xl shadow-xl border border-glue-200 text-center">
                 <div className="flex flex-col items-center mb-4 w-full h-[190px]">
-                    <Image src={logo} alt="Logo" width={180} height={180} className="mb-6" />
-                    <Image src={arrowDown} alt="Arrow Down" width={100} height={100} className="" />
+                    <Image src={logo} alt="Logo" width={240} height={240} className="mb-6" />
+                    <Image src={arrowDown} alt="Arrow Down" width={80} height={80} className="animate-bounce mt-4" />
                 </div>
 
-                <div className="space-y-4 cursor-pointer">
+                <div className="space-y-4 cursor-pointer mt-12">
                     <button
                         type="button"
                         onClick={handleGoogleLogin}
-                        className="w-full flex items-center cursor-pointer justify-center px-4 py-3 rounded-full hover:opacity-90 transition-all text-brand-900 font-medium bg-accent"
+                        className="w-full flex items-center cursor-pointer justify-center px-4 py-3 rounded-full hover:opacity-90 transition-all text-glue-950 font-medium bg-glue-950"
                     >
                         <svg aria-hidden="true" className="h-5 w-5 mr-3" viewBox="0 0 24 24">
                             <path
