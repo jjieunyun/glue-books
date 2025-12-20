@@ -5,10 +5,12 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
 
   turbopack: {
+    // Ensure Turbopack picks this repo as the workspace root (prevents lockfile-based mis-detection)
+    root: process.cwd(),
     rules: {
-      '**/image/icons/**/*.svg': {
-        loaders: ['@svgr/webpack'],
-        as: '*.js',
+      "**/image/icons/**/*.svg": {
+        loaders: ["@svgr/webpack"],
+        as: "*.js",
       },
     },
   },
@@ -16,8 +18,8 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/login',
+        source: "/",
+        destination: "/login",
         permanent: false,
       },
     ];
@@ -28,8 +30,24 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'lh3.googleusercontent.com',
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.notion.so",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "contents.kyobobook.co.kr",
+      },
+      {
+        protocol: "https",
+        hostname: "prod-files-secure.s3.us-west-2.amazonaws.com",
       },
     ],
   },

@@ -27,4 +27,23 @@
   .latte-input {
     @apply px-4 py-2 rounded-lg border border-glue-200 dark:border-glue-800 bg-white dark:bg-glue-950 focus:ring-2 focus:ring-glue-300 focus:outline-none w-full transition-all;
   }
+
+  /* Books list scrollbar */
+  .books-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #C9B7A5 transparent;
+  }
+
+  .books-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .books-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .books-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #C9B7A5;
+    border-radius: 999px;
+  }
 }

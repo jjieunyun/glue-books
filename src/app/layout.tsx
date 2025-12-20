@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nanum_Gothic, Schoolbell } from "next/font/google";
+import { Nanum_Gothic, Schoolbell, Vibes } from "next/font/google";
 import "./globals.css";
 import UserInitializer from "./components/UserInitializer";
 
@@ -17,6 +17,13 @@ const schoolbell = Schoolbell({
   variable: "--font-schoolbell",
 });
 
+const vibes = Vibes({
+  weight: ["400"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-vibes",
+});
+
 export const metadata: Metadata = {
   title: "Glue - Share Your Reading Journey",
 };
@@ -28,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nanumGothic.variable} ${schoolbell.variable} font-sans`} suppressHydrationWarning={true}>
+      <body className={`${nanumGothic.variable} ${schoolbell.variable} ${vibes.variable} font-sans`} suppressHydrationWarning={true}>
         <UserInitializer />
         <main className="min-h-screen">
           {children}

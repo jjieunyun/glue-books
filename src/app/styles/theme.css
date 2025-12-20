@@ -45,6 +45,7 @@
   /* Font */
   --font-sans: var(--font-nanum-gothic), sans-serif;
   --font-schoolbell: var(--font-schoolbell), cursive;
+  --font-vibes: var(--font-vibes), cursive;
 }
 
 @media (prefers-color-scheme: dark) {
