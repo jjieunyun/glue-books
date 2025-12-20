@@ -1,6 +1,7 @@
 "use client";
 
 import IconHeart from "@image/books/icon-heart.svg";
+import IcArrow from "@image/ic-arrow.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -34,9 +35,10 @@ export default function BookDetailClient({ id }: { id?: string }) {
         >
             <Link
                 href="/books"
-                className="text-[#8D6E63] hover:text-[#5D4037] text-sm mb-6 inline-block"
+                className="text-glue-950 flex gap-x-2 items-center hover:text-[#5D4037] mb-6 font-schoolbell text-xl font-bold"
             >
-                &larr; Back to Library
+                <Image src={IcArrow} alt="Arrow" width={20} height={20} className="rotate-180" />
+                <span>Back to Library</span>
             </Link>
 
             {isLoading ? (
@@ -49,39 +51,7 @@ export default function BookDetailClient({ id }: { id?: string }) {
                 </div>
             ) : (
                 <>
-                    <div className="flex flex-col md:flex-row gap-12 mb-16 items-center py-8">
-                        <BookCover cover={book.cover} title={book.title} />
-                        <div className="flex-1">
-                            <h1 className="latte-h1 mb-2">{book.title}</h1>
-                            <p className="text-xl text-[#6D4C41] mb-6">
-                                {book.author || "저자 미상"}
-                            </p>
-
-                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-[#8D6E63]">
-                                <InfoItem label="Author" value={book.author || "-"} />
-                                <InfoItem label="Publisher" value={book.publisher || "-"} />
-                                <InfoItem
-                                    label="Date"
-                                    value={
-                                        book.meetingDate
-                                            ? formatMeetingDate(book.meetingDate)
-                                            : (book.year ?? "-")
-                                    }
-                                />
-                                <InfoItem
-                                    label="Category"
-                                    value={
-                                        Array.isArray(book.category)
-                                            ? book.category.join(", ")
-                                            : book.category || "-"
-                                    }
-                                />
-                                <InfoItem label="Pages" value={book.pages ?? "-"} />
-                                <RatingsBlock ratings={book.ratings} bookId={book.id} />
-                            </div>
-                        </div>
-                    </div>
-
+                    <BookInfo book={book} />
                     <OneLineReviewBlock
                         reviews={reviews}
                         isOneLineReviewsLoading={isOneLineReviewsLoading}
@@ -89,6 +59,43 @@ export default function BookDetailClient({ id }: { id?: string }) {
                 </>
             )}
         </section>
+    );
+}
+
+function BookInfo({ book }: { book: BookDetails }) {
+    return (
+        <div className="flex flex-col md:flex-row gap-12 mb-16 items-center py-8">
+            <BookCover cover={book.cover} title={book.title} />
+            <div className="flex-1">
+                <h1 className="latte-h1 mb-2">{book.title}</h1>
+                <p className="text-xl text-[#6D4C41] mb-6">
+                    {book.author || "저자 미상"}
+                </p>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm text-[#8D6E63]">
+                    <InfoItem label="Author" value={book.author || "-"} />
+                    <InfoItem label="Publisher" value={book.publisher || "-"} />
+                    <InfoItem
+                        label="Date"
+                        value={
+                            book.meetingDate
+                                ? formatMeetingDate(book.meetingDate)
+                                : (book.year ?? "-")
+                        }
+                    />
+                    <InfoItem
+                        label="Category"
+                        value={
+                            Array.isArray(book.category)
+                                ? book.category.join(", ")
+                                : book.category || "-"
+                        }
+                    />
+                    <InfoItem label="Pages" value={book.pages ?? "-"} />
+                    <RatingsBlock ratings={book.ratings} bookId={book.id} />
+                </div>
+            </div>
+        </div>
     );
 }
 
@@ -124,9 +131,7 @@ function OneLineReviewBlock({
                                 {reviews.columns.map((column, columnIndex) => (
                                     <col
                                         key={column || `col-${columnIndex}`}
-                                        className={
-                                            writerColumnIndex === columnIndex ? "w-24" : ""
-                                        }
+                                        className={writerColumnIndex === columnIndex ? "w-24" : ""}
                                     />
                                 ))}
                             </colgroup>
@@ -155,11 +160,8 @@ function OneLineReviewBlock({
                                             return (
                                                 <td
                                                     key={`${rowKey}-${columnName}`}
-                                                    className={`px-4 py-2 ${
-                                                        writerColumnIndex === i
-                                                            ? "whitespace-nowrap"
-                                                            : ""
-                                                    }`}
+                                                    className={`px-4 py-2 ${writerColumnIndex === i ? "whitespace-nowrap" : ""
+                                                        }`}
                                                 >
                                                     {cell || "-"}
                                                 </td>
