@@ -56,15 +56,6 @@ const getRating = (
     return null;
 };
 
-const getTitleFromProperties = (
-    properties: PageObjectResponse["properties"],
-) => {
-    const titleProp = Object.values(properties).find(
-        (prop) => prop.type === "title",
-    );
-    if (!titleProp || titleProp.type !== "title") return "";
-    return titleProp.title.map((t) => t.plain_text).join("");
-};
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
@@ -156,6 +147,8 @@ export async function GET(request: Request) {
         const mihakRating = getRating(
             getProperty(typedPage.properties, ["미학에게 이 책은"]),
         );
+
+
 
         return NextResponse.json({
             data: {

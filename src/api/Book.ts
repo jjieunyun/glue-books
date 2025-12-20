@@ -17,3 +17,9 @@ export async function getPastBookList() {
         method: 'GET',
     })
 }
+
+export async function getOneLineReviews({ id }: { id: string }) {
+    return fetch(`/api/book/one-line-reviews?id=${encodeURIComponent(id)}`, {
+        method: 'GET',
+    })
+}

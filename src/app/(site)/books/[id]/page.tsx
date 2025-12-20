@@ -1,5 +1,8 @@
 import BookDetailClient from "./_components/BookDetailClient";
 
-export default function BookDetailPage({ params }: { params: { id: string } }) {
-    return <BookDetailClient id={params.id} />;
+export default async function BookDetailPage({
+    params,
+}: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
+    return <BookDetailClient id={id} />;
 }

@@ -1,5 +1,5 @@
 "use client";
-import { getBookDetails } from "@api/Book";
+import { getBookDetails, getOneLineReviews } from "@api/Book";
 import apiClientHandler from "@lib/apiClientHandler";
 import { useCallback, useEffect, useState } from "react";
 
@@ -20,9 +20,19 @@ export interface BookDetails {
     };
 }
 
+export interface OneLineReviews {
+    title: string;
+    columns: string[];
+    rows: string[][];
+}
+
 export default function useBookDetails({ id }: { id?: string }) {
     const [bookDetails, setBookDetails] = useState<BookDetails | null>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [oneLineReviews, setOneLineReviews] = useState<OneLineReviews | null>(
+        null,
+    );
+    const [isOneLineReviewsLoading, setIsOneLineReviewsLoading] = useState(true);
 
     const fetchBookDetails = useCallback(async () => {
         if (!id) {
@@ -37,17 +47,34 @@ export default function useBookDetails({ id }: { id?: string }) {
         setIsLoading(false);
     }, [id]);
 
+    const fetchOneLineReviews = useCallback(async () => {
+        if (!id) {
+            setIsOneLineReviewsLoading(false);
+            return;
+        }
+        setIsOneLineReviewsLoading(true);
+        const res = await apiClientHandler(getOneLineReviews({ id }));
+        if (res?.result) {
+            setOneLineReviews(res.data);
+        }
+        setIsOneLineReviewsLoading(false);
+    }, [id]);
+
     useEffect(() => {
         void fetchBookDetails();
-    }, [fetchBookDetails]);
+        void fetchOneLineReviews();
+    }, [fetchBookDetails, fetchOneLineReviews]);
 
     return {
         states: {
             bookDetails,
             isLoading,
+            oneLineReviews,
+            isOneLineReviewsLoading,
         },
         actions: {
             fetchBookDetails,
+            fetchOneLineReviews,
         },
     };
 }
